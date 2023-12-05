@@ -247,3 +247,4 @@ export class BladesHelpers {
   static clockUrlFromPar(type,value) {
     return "systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock " + type + "-" + value + ".svg";
   }
+}
