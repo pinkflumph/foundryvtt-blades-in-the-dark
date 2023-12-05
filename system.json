@@ -2,7 +2,7 @@
   "id": "blades-in-the-dark",
   "title": "Blades in the Dark",
   "description": "Blades in the dark game system.",
-  "version": "4.852",
+  "version": "4.853",
   "compatibility": {
     "minimum": 10,
     "verified": "10.284"
@@ -11,7 +11,7 @@
   "minimumCoreVersion": "10",
   "url": "https://github.com/pinkflumph/foundryvtt-blades-in-the-dark/",
   "manifest": "https://raw.githubusercontent.com/pinkflumph/foundryvtt-blades-in-the-dark/master/system.json",
-  "download": "https://github.com/pinkflumph/foundryvtt-blades-in-the-dark/releases/download/4.852/blades-in-the-dark-4.852.zip",
+  "download": "https://github.com/pinkflumph/foundryvtt-blades-in-the-dark/releases/download/4.853/blades-in-the-dark-4.853.zip",
   "authors": [
     { "name": "megastruktur" },
     { "name": "drewg13" },
