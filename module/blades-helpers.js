@@ -193,4 +193,24 @@ export class BladesHelpers {
 
   }
 
+  static clockToDataUri( clockFile, style ) {
+  // Check that the file is an SVG
+  if (!svgFile || !svgFile.type.match('image/svg+xml')) {
+    throw new Error('Invalid file type. Please select an SVG file.');
+  }
+
+  // Read the file as a text string
+  return new Promise((resolve, reject) => {
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      // Encode the SVG as a data URI
+      const dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(reader.result + style);
+      resolve(dataUri);
+    };
+    reader.onerror = reject;
+    reader.readAsText(clockFile);
+  });
+}
+
+
 }
