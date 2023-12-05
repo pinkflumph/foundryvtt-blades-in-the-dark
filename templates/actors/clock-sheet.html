@@ -11,6 +11,20 @@
             <option value="8">8</option>
             {{/select}}
         </select>
+
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-end; align-items: center; gap: 4px;">
+            <input class="color" type="text" name="system.color" value="{{system.color}}">
+            <input type="color" value="#fa0000" data-edit="system.color">
+        </div>
+        
+        <select data-type="String" name="system.color">
+            {{#select system.color}}
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="8">8</option>
+            {{/select}}
+        </select>
+        
         {{/if}}
 
         <div class="clocks clocks-{{system.type}}">
