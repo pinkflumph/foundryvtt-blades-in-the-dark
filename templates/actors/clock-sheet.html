@@ -13,14 +13,16 @@
         </select>
 
         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-end; align-items: center; gap: 4px;">
-            <input class="color" type="text" name="prototypeToken.texture.tint" value="{{prototypeToken.texture.tint}}">
-            <input type="color" value="{{prototypeToken.texture.tint}}" data-edit="prototypeToken.texture.tint">
+<!--            <input class="color" type="text" name="prototypeToken.texture.tint" value="{{prototypeToken.texture.tint}}">
+            <input type="color" value="{{prototypeToken.texture.tint}}" data-edit="prototypeToken.texture.tint"> -->
+            <input class="color" type="text" name="system.fill_color" value="{{prototypeToken.texture.tint}}">
+            <input type="color" value="{{prototypeToken.texture.tint}}" data-edit="system.fill_color">
         </div>
         
         {{/if}}
 
         <div class="clocks clocks-{{system.type}}">
-            {{{blades-clock "system.value" system.type system.value _id}}}
+            {{{blades-clock "system.value" system.type system.value system.fill_color _id}}}
         </div>
     </div>
 </form>
