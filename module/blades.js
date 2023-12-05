@@ -242,7 +242,7 @@ Hooks.once("init", async function() {
    * Create appropriate Blades clock
    */
 
-  Handlebars.registerHelper('blades-clock', function(parameter_name, type, current_value, uniq_id) {
+  Handlebars.registerHelper('blades-clock', function(parameter_name, type, current_value, fill_color, uniq_id) {
 
     let html = '';
 
@@ -254,9 +254,11 @@ Hooks.once("init", async function() {
       current_value = type;
     }
 
+    const clockUri = clockToDataUri('systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock ${type}-${current_value}.svg', fill_color);
+
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock ${type}-${current_value}.svg');">`;
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url(${clockUri});">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
     html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
