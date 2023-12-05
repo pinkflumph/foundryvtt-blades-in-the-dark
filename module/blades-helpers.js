@@ -193,24 +193,57 @@ export class BladesHelpers {
 
   }
 
-  static clockToDataUri( clockFile, fill_color ) {
-  // Check that the file is an SVG
-  if (!svgFile || !svgFile.type.match('image/svg+xml')) {
-    throw new Error('Invalid file type. Please select an SVG file.');
+  static clockToDataUri( type, value, fill_color ) {
+    // Generate clock URL
+    let clockUrl = "systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock " + type + "-" + value + ".svg";
+    
+    // Read the file
+    let request = new XMLHttpRequest();
+    request.open('GET', clockUrl, true);
+    request.responseType = 'blob';
+    //return new Promise((resolve, reject) => {
+      request.onload = function() {
+          let reader = new FileReader();
+         // reader.readAsText(request.response);
+          reader.onloadend = () => {
+            // Encode the SVG as a data URI
+            const clockUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(reader.result.replace("var(--fill_color_default)",fill_color));
+            return clockUri;
+          };
+          //reader.onerror = reject;
+          reader.readAsText(request.response);
+      };
+    request.send();
+    //}
+    
+//  async function createBlob(){
+//  let response = await fetch('http://127.0.0.1:8080/test.jpg');
+//  let data = await response.blob();
+//  let metadata = {
+//    type: 'image/jpeg'
+//  };
+//  let file = new File([data], "test.jpg", metadata);
+  // ... do something with the file or return it
+//}
+//createFile();  
+    
+ //   let clockFile = new File(clockUrl);
+ // fetch(clockFile).then(res => res.blob()).then(clockBlob => {
+    // Read the file as a text string
+ //   return new Promise((resolve, reject) => {
+ //     let reader = new FileReader();
+ //     reader.onloadend = () => {
+ //       // Encode the SVG as a data URI
+ //       const clockUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(reader.result.replace("var(--fill_color_default)",fill_color));
+ //       resolve(clockUri);
+ //     };
+//      reader.onerror = reject;
+//      reader.readAsText(clockFile);
+ //   });
+  //}
   }
 
-  // Read the file as a text string
-  return new Promise((resolve, reject) => {
-    let reader = new FileReader();
-    reader.onloadend = () => {
-      // Encode the SVG as a data URI
-      const dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(reader.result.replace("var(--fill_color_default)",fill_color));
-      resolve(dataUri);
-    };
-    reader.onerror = reject;
-    reader.readAsText(clockFile);
-  });
-}
 
-
-}
+  static clockUrlFromPar(type,value) {
+    return "systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock " + type + "-" + value + ".svg";
+  }
