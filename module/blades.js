@@ -254,7 +254,8 @@ Hooks.once("init", async function() {
       current_value = type;
     }
 
-    const clockUri = clockToDataUri('systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock ${type}-${current_value}.svg', fill_color);
+    let clockUri = BladesHelpers.clockToDataUri(type, current_value, fill_color);
+//    const clockUri = clockToDataUri('systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock ${type}-${current_value}.svg', fill_color);
 
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
