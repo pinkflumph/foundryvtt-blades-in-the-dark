@@ -193,7 +193,7 @@ export class BladesHelpers {
 
   }
 
-  static clockToDataUri( clockFile, style ) {
+  static clockToDataUri( clockFile, fill_color ) {
   // Check that the file is an SVG
   if (!svgFile || !svgFile.type.match('image/svg+xml')) {
     throw new Error('Invalid file type. Please select an SVG file.');
@@ -204,7 +204,7 @@ export class BladesHelpers {
     let reader = new FileReader();
     reader.onloadend = () => {
       // Encode the SVG as a data URI
-      const dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(reader.result + style);
+      const dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(reader.result.replace("var(--fill_color_default)",fill_color));
       resolve(dataUri);
     };
     reader.onerror = reject;
